@@ -1,0 +1,21 @@
+server side:
+1. create welcome socket
+2. accept connection from client to another socket (control channel)
+3. receive port information and command from client for data channel
+4. create new socket and connect to client (data channel)
+5. respond to command (send back data over data channel or begin receiving data from data channel)
+6. print out SUCCESS/FAILURE
+7. close data connection
+8. go back to step 3 if client sends more valid commands
+9. close control channel otherwise
+
+client side:
+1. create control socket and connect to server at server's welcome socket (connection between client control socket and server new socket)
+2. take user input for commands and check if valid
+3. for valid commands, create new socket, send port info and command to server over control channel
+3.5 data connection is opened
+4. receive response from server/upload file
+5. print filename and number of bytes transferred
+6. close data connection
+7. go back to step 2, loop until command quit
+8. close control connection
